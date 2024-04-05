@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './../static/style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faEye } from '@fortawesome/free-solid-svg-icons';
 
 const ACCESS_KEY = 'jUu3iy7A8B0DAuMykgv_TGlq1DHaGurIBCocRaPJSag';
 const SECRET_KEY = 'IZlTIlrJeDngn2L95c67UeNb2BzOCGU2QM01qReu4J8';
@@ -10,6 +12,7 @@ function ListPhotos(): React.FC {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isLastPage, setIsLastPage] = useState(false);
+  const [likedImages, setLikedImages] = useState<string[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -42,19 +45,32 @@ function ListPhotos(): React.FC {
     };
   }, [currentPage, isLastPage, totalPages]);
 
+  const toggleLike = (imageId: string) => {
+    if (likedImages.includes(imageId)) {
+      setLikedImages(likedImages.filter(id => id !== imageId));
+    } else {
+      setLikedImages([...likedImages, imageId]);
+    }
+  };
 
   return (
     <div className="container">
-      {images.map((image) => (
-        <div key={image.id} className="image-card">
-          <img src={image.urls.small} alt={image.description} />
-          <p>{image.alt_description || 'Image description'}</p> {/* Optional: Display alt text or default text */}
-          <div>
-            <button className="like-button">Like</button>
-            <button className="view-button">View</button>
+      <div className="image-grid">
+        {images.map((image) => (
+          <div key={image.id} className="image-card">
+            <img src={image.urls.small} alt={image.description} />
+            <p>{image.alt_description || 'Image description'}</p>
+            <div>
+              <button className="like-button" onClick={() => toggleLike(image.id)}>
+                <FontAwesomeIcon icon={faThumbsUp} color={likedImages.includes(image.id) ? 'blue' : 'black'} />
+              </button>
+              <button className="view-button">
+                <FontAwesomeIcon icon={faEye} />
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
       {isLastPage && <div>Fin des images</div>}
     </div>
   );

@@ -21,7 +21,7 @@ export default function LoginPage() {
     try {
       const isAuthenticated = await authenticate(username, password);
       if (isAuthenticated) {
-        router.push('/profile');
+        router.push('/listphotos');
       } else {
         const user = await getUser(username);
         setErrorMessage(user?.blocked ? 'Ce compte a été bloqué.' : 'Informations de connexion invalides');
