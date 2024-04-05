@@ -51,33 +51,43 @@ export default function LoginPage() {
     <div className="login-container grid grid-cols-2">
       <div className="form-container flex items-center justify-center px-10 py-20 bg-gray-800 rounded-lg shadow-md">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-10">Login</h1>
+          <h1 className="text-3xl font-bold text-white mb-10">Welcome Back</h1>
           <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-            <div className="flex flex-col">
-              <label htmlFor="username" className="text-white mb-2">Username</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Enter your username"
-                required
-                className="w-full px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="password" className="text-white mb-2">Password</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter your password"
-                required
-                className="w-full px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-              Login
-            </button>
+          <div className="flex flex-col">
+  <label htmlFor="username" className="text-white mb-2">Username</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+    placeholder="Enter your username"
+    required
+    className="input-field"
+  />
+</div>
+<div className="flex flex-col">
+  <label htmlFor="password" className="text-white mb-2">Password</label>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Enter your password"
+    required
+    className="input-field"
+  />
+</div>
+
+<button type="submit" style={{
+  backgroundColor: '#000', /* Light orange */
+  color: '#fff', /* White text */
+  padding: '10px 20px',
+  border: 'none',
+  borderRadius: '4px',
+  cursor: 'pointer',
+  fontSize: '16px', /* Optional: adjust font size */
+}}>
+  Sign In
+</button>
+
           </form>
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         </div>
