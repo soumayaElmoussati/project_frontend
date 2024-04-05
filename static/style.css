@@ -8,6 +8,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 5 colonnes de largeur égale */
     grid-gap: 20px;
+    margin-top: 20px;
   }
   
   .image-card {
@@ -37,5 +38,35 @@
   
   .view-button {
     background-color: #ddd;
+  }
+  
+
+  .navbar {
+    display: flex; /* Make the navigation bar horizontal */
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: center; /* Align items vertically */
+    background-color: #f5f5f5; /* Light gray background */
+    padding: 10px 20px;
+  }
+  
+  .navbar ul {
+    list-style: none; /* Remove default bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .navbar li {
+    display: inline-block; /* Display list items inline */
+    margin-right: 20px; /* Add spacing between items */
+  }
+  
+  .navbar a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Dark gray text color */
+    font-weight: bold; /* Bold font weight */
+  }
+  
+  .navbar a:hover {
+    color: #000; /* Black text color on hover */
   }
   

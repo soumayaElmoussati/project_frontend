@@ -3,6 +3,7 @@ import axios from 'axios';
 import './../static/style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faEye } from '@fortawesome/free-solid-svg-icons';
+import NavigationBar from './NavigationBar';
 
 const ACCESS_KEY = 'jUu3iy7A8B0DAuMykgv_TGlq1DHaGurIBCocRaPJSag';
 const SECRET_KEY = 'IZlTIlrJeDngn2L95c67UeNb2BzOCGU2QM01qReu4J8';
@@ -55,6 +56,7 @@ function ListPhotos(): React.FC {
 
   return (
     <div className="container">
+        <NavigationBar /> 
       <div className="image-grid">
         {images.map((image) => (
           <div key={image.id} className="image-card">
