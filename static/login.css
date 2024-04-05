@@ -1,0 +1,47 @@
+.login-container {
+    display: flex; /* Permet de placer les éléments côte à côte */
+    justify-content: center; /* Aligne horizontalement le contenu du conteneur */
+  }
+  
+  .background-image,
+  .form-container {
+    flex: 1; /* Occupe chacun 50% de l'espace disponible */
+    overflow: hidden; /* Masque le débordement de l'image et du formulaire */
+  }
+  
+  .background-image img {
+    width: 100%; /* Largeur de l'image à 100% */
+    height: 100%; /* Hauteur de l'image à 100% */
+    object-fit: cover; /* Recouvre l'élément en conservant le ratio */
+    object-position: center; /* Centre l'image */
+  }
+  
+  .form-container {
+    padding: 10px 20px; /* Espacement intérieur */
+    background-color: #fff; /* Fond blanc du formulaire */
+    color: #333; /* Couleur du texte du formulaire */
+    border: 1px solid #ddd; /* Bordure grise */
+    border-radius: 10px; /* Coins arrondis du formulaire */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre du formulaire */
+    margin: 0 auto; /* Marge automatique pour centrer horizontalement */
+    width: 400px; /* Largeur fixe du formulaire */
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%; /* Largeur totale */
+    padding: 10px 15px; /* Espacement intérieur */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 4px; /* Coins légèrement arrondis */
+    font-size: 16px; /* Taille du texte */
+    color: #333; /* Couleur du texte */
+    background-color: #fff; /* Fond blanc */
+    margin-bottom: 15px; /* Espace entre les champs */
+  }
+  
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: #66afe9; /* Bordure bleue en focus */
+    outline: none; /* Supprime la bordure par défaut */
+  }
+  

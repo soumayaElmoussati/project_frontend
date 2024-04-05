@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './../static/style.css';
 
-const ACCESS_KEY = 'YOUR_ACCESS_KEY';
-const SECRET_KEY = 'YOUR_SECRET_KEY';
+const ACCESS_KEY = 'jUu3iy7A8B0DAuMykgv_TGlq1DHaGurIBCocRaPJSag';
+const SECRET_KEY = 'IZlTIlrJeDngn2L95c67UeNb2BzOCGU2QM01qReu4J8';
 
-function List(): React.FC {
+function ListPhotos(): React.FC {
   const [images, setImages] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -22,27 +23,37 @@ function List(): React.FC {
   }, [currentPage]);
 
   useEffect(() => {
-    async function getTotalPagesData() {
-      const totalPagesData = await getTotalPages();
-      setTotalPages(totalPagesData);
-    }
-    getTotalPagesData();
-  }, []);
-
-  function handleScroll() {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      if (!isLastPage && currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
+    function handleScroll() {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        if (!isLastPage && currentPage < totalPages) {
+          setCurrentPage(currentPage + 1);
+        }
       }
     }
-  }
 
-  window.addEventListener('scroll', handleScroll);
+    if (typeof window !== "undefined") {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [currentPage, isLastPage, totalPages]);
+
 
   return (
-    <div>
+    <div className="container">
       {images.map((image) => (
-        <img key={image.id} src={image.urls.small} alt={image.description} />
+        <div key={image.id} className="image-card">
+          <img src={image.urls.small} alt={image.description} />
+          <p>{image.alt_description || 'Image description'}</p> {/* Optional: Display alt text or default text */}
+          <div>
+            <button className="like-button">Like</button>
+            <button className="view-button">View</button>
+          </div>
+        </div>
       ))}
       {isLastPage && <div>Fin des images</div>}
     </div>
